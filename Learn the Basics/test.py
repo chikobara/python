@@ -1,14 +1,13 @@
-fh = open('mbox-short.txt')
-d = {}
-# fl = ('-','1','2','3','4','5','6','7','8','9','0','http','Http','(','#','@','!','"' , "'",'<','>','/')
-lst = []
-for line in fh:
-	if not line.startswith('From'):
-		continue
-	else:
-		linelst = line.split()
-		mails = linelst[1]
-		d[mails] = d.get(mails, 0) + 1
-lst = sorted([(v,k) for k,v in d.items()], reverse=True)
-for v,k in lst:
-	print('Mail:' ,k ,'  is ', v,'times.')
+import socket
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'Get http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+mysock.send(cmd)
+
+
+while True:
+	data = mysock.recv(512)
+	if (len(data) < 1):
+		break
+	print(data.decode())
+mysock.close

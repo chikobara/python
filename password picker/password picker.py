@@ -36,4 +36,3 @@ while b == 0:
 				break
 	except:
 		continue
-	
