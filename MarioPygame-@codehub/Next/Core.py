@@ -15,17 +15,18 @@ class Core(object):
     Main class.
 
     """
+
     def __init__(self):
-        environ['SDL_VIDEO_CENTERED'] = '1'
+        environ["SDL_VIDEO_CENTERED"] = "1"
         pg.mixer.pre_init(44100, -16, 2, 1024)
         pg.init()
-        pg.display.set_caption('Mario by S&D')
+        pg.display.set_caption("Mario by S&D")
         pg.display.set_mode((WINDOW_W, WINDOW_H))
 
         self.screen = pg.display.set_mode((WINDOW_W, WINDOW_H))
         self.clock = pg.time.Clock()
 
-        self.oWorld = Map('1-1')
+        self.oWorld = Map("1-1")
         self.oSound = Sound()
         self.oMM = MenuManager(self)
 
@@ -44,7 +45,7 @@ class Core(object):
             self.clock.tick(FPS)
 
     def input(self):
-        if self.get_mm().currentGameState == 'Game':
+        if self.get_mm().currentGameState == "Game":
             self.input_player()
         else:
             self.input_menu()

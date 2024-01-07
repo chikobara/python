@@ -1,5 +1,4 @@
 import xml.etree.ElementTree as ET
-
 input = '''
 <stuff>
   <users>
@@ -13,15 +12,10 @@ input = '''
     </user>
   </users>
 </stuff>'''
-
-
-
 stuff = ET.fromstring(input)
-
 lst = stuff.findall('users/user')
-print(lst)
-#print('User count:', len(lst))
-#for item in lst:
-#    print('Name', item.find('name').text)
-#    print('Id', item.find('id').text)
-#    print('Attribute', item.get('x'))
+print('User count:', len(lst))
+for item in lst:
+   print('Name', item.find('name').text)
+   print('Id', item.find('id').text)
+   print('Attribute', item.get('x'))
